@@ -26,16 +26,16 @@ demonstrate! {
         use hamcrest2::prelude::*;
     
         it "chance scores the sum of all dice, no matter what they read" {
-            assert_that!(yatzy(roll(1,1,3,3,6)), eq(1+1+3+3+6));
-            assert_that!(yatzy(roll(4,5,5,6,1)), eq(4+5+5+6+1));
+            assert_that!(yatzy(Category::Chance, roll(1,1,3,3,6)), eq(1+1+3+3+6));
+            assert_that!(yatzy(Category::Chance, roll(4,5,5,6,1)), eq(4+5+5+6+1));
         }
         
-        // Yatzy:
-        // If all dice have the same number, the player scores 50 points.
-        // For example,
-        //    1,1,1,1,1 placed on "yatzy" scores 50
-        //    5,5,5,5,5 placed on "yatzy" scores 50
-        //    1,1,1,2,1 placed on "yatzy" scores 0
+        it "Yatzy: If all dice have the same number, the player scores 50 points." {
+            assert_that!(yatzy(Category::Yatzy, roll(1,1,1,1,1)), eq(50));
+            //    1,1,1,1,1 placed on "yatzy" scores 50
+            //    5,5,5,5,5 placed on "yatzy" scores 50
+            //    1,1,1,2,1 placed on "yatzy" scores 0
+        }
         
         // Ones, Twos, Threes, Fours, Fives, Sixes:
         // The player scores the sum of the dice that reads one, two, three, four, five or six, respectively.
