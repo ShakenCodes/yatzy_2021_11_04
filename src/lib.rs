@@ -1,9 +1,11 @@
 pub enum Category {
+    Ones,
     Yatzy,
     Chance,
 }
 pub fn yatzy(category: Category, roll: Vec<u32>) -> u32 {
     match category {
+        Category::Ones => 0,
         Category::Yatzy => score_yatzy(roll),
         Category::Chance => score_chance(roll),
     }
