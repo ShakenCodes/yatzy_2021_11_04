@@ -32,9 +32,8 @@ demonstrate! {
         
         it "Yatzy: If all dice have the same number, the player scores 50 points." {
             assert_that!(yatzy(Category::Yatzy, roll(1,1,1,1,1)), eq(50));
-            //    1,1,1,1,1 placed on "yatzy" scores 50
-            //    5,5,5,5,5 placed on "yatzy" scores 50
-            //    1,1,1,2,1 placed on "yatzy" scores 0
+            assert_that!(yatzy(Category::Yatzy, roll(5,5,5,5,5)), eq(50));
+            assert_that!(yatzy(Category::Yatzy, roll(1,1,1,2,1)), eq(0));
         }
         
         // Ones, Twos, Threes, Fours, Fives, Sixes:
