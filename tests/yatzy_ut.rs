@@ -42,9 +42,13 @@ demonstrate! {
         }
         it "Ones, Twos, Threes, Fours, Fives, Sixes: scores the sum of dice that reads one, two, three, four, five or six, respectively" {
             assert_that!(yatzy(Category::Ones, roll(3,3,3,4,5)), eq(0));
-            assert_that!(yatzy(Category::Ones, roll(1,1,1,1,1)), eq(5));
+            assert_that!(yatzy(Category::Ones, roll(1,1,1,1,1)), eq(1+1+1+1+1));
             assert_that!(yatzy(Category::Twos, roll(2,3,2,5,1)), eq(2+2));
-            //    1,1,2,4,4 placed on "fours" scores 8 (4+4)
+            assert_that!(yatzy(Category::Threes, roll(2,3,2,5,1)), eq(3));
+            assert_that!(yatzy(Category::Fours, roll(1,1,2,4,4)), eq(4+4));
+            assert_that!(yatzy(Category::Fives, roll(5,5,5,5,5)), eq(5+5+5+5+5));
+            assert_that!(yatzy(Category::Sixes, roll(2,3,2,5,1)), eq(0));
+            assert_that!(yatzy(Category::Sixes, roll(4,5,5,6,1)), eq(6));
         }
         
         // Pair:

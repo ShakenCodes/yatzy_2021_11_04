@@ -1,6 +1,10 @@
 pub enum Category {
     Ones,
     Twos,
+    Threes,
+    Fours,
+    Fives,
+    Sixes,
     Yatzy,
     Chance,
 }
@@ -8,6 +12,10 @@ pub fn yatzy(category: Category, roll: Vec<u32>) -> u32 {
     match category {
         Category::Ones => score_uppers(1, roll),
         Category::Twos => score_uppers(2, roll),
+        Category::Threes => score_uppers(3, roll),
+        Category::Fours => score_uppers(4, roll),
+        Category::Fives => score_uppers(5, roll),
+        Category::Sixes => score_uppers(6, roll),
         Category::Yatzy => score_yatzy(roll),
         Category::Chance => score_chance(roll),
     }
