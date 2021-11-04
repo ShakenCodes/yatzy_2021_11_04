@@ -38,6 +38,7 @@ demonstrate! {
         
         it "Ones scores the sum of dice that read one" {
             assert_that!(yatzy(Category::Ones, roll(3,3,3,4,5)), eq(0));
+            assert_that!(yatzy(Category::Ones, roll(1,1,1,1,1)), eq(5));
         }
         // Ones, Twos, Threes, Fours, Fives, Sixes:
         // The player scores the sum of the dice that reads one, two, three, four, five or six, respectively.
