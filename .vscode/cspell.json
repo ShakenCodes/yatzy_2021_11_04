@@ -1,0 +1,8 @@
+{
+    "dictionaryDefinitions": [
+        { "name": "project", "path": "./project.dict"}
+    ],
+    "dictionaries": [
+        "project"
+    ],
+}
