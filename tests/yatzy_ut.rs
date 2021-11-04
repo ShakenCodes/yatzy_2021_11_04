@@ -2,36 +2,34 @@
 use demonstrate::demonstrate;
 
 #[cfg(test)]
+fn roll(a: u32, b: u32, c: u32, d: u32, e: u32) -> Vec<u32> {
+    vec![a, b, c, d, e]
+}
+
+#[cfg(test)]
 demonstrate! {
-    describe "In a new context" {
+    // The game of yatzy is a simple dice game. Each player rolls five six-sided dice. The player places the roll in a category, such as ones, twos, fives, pair, two pairs etc (see below). If the roll is compatible with the category, the player gets a score for the roll according to the rules. If the roll is not compatible with the category, the player scores zero for the roll.
+    //
+    // For example, if a player rolls 5,6,5,5,2 and scores the dice in the fives category they would score 15 (three fives).
+    //
+    // Your task is to score a GIVEN roll in a GIVEN category.
+    // You do NOT have to program the random dice rolling.
+    // You do NOT have to program re-rolls (as in the real game).
+    // You do NOT play by letting the computer choose the highest scoring category for a given roll.
+    
+    
+    // Yatzy Categories and Scoring Rules
+    // ==================================
+    describe "In a yatzy game with five rolls" {
+        use super::roll;
         use yatzy::*;
         use hamcrest2::prelude::*;
     
-        it "works" {
-            assert_that!(sum(2, 2), eq(4));
+        it "chance scores the sum of all dice, no matter what they read" {
+            assert_that!(yatzy(roll(1,1,3,3,6)), eq(14));
+            //    1,1,3,3,6 placed on "chance" scores 14 (1+1+3+3+6)
+            //    4,5,5,6,1 placed on "chance" scores 21 (4+5+5+6+1)
         }
-        #[should_panic]
-        it "fails" {
-            assert_that!(sum(2, 2), gt(5));
-        }
-        // The game of yatzy is a simple dice game. Each player rolls five six-sided dice. The player places the roll in a category, such as ones, twos, fives, pair, two pairs etc (see below). If the roll is compatible with the category, the player gets a score for the roll according to the rules. If the roll is not compatible with the category, the player scores zero for the roll.
-
-        // For example, if a player rolls 5,6,5,5,2 and scores the dice in the fives category they would score 15 (three fives).
-        
-        // Your task is to score a GIVEN roll in a GIVEN category.
-        // You do NOT have to program the random dice rolling.
-        // You do NOT have to program re-rolls (as in the real game).
-        // You do NOT play by letting the computer choose the highest scoring category for a given roll.
-        
-        
-        // Yatzy Categories and Scoring Rules
-        // ==================================
-        
-        // Chance:
-        // The player scores the sum of all dice, no matter what they read.
-        // For example,
-        //    1,1,3,3,6 placed on "chance" scores 14 (1+1+3+3+6)
-        //    4,5,5,6,1 placed on "chance" scores 21 (4+5+5+6+1)
         
         // Yatzy:
         // If all dice have the same number, the player scores 50 points.
