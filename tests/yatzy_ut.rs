@@ -50,7 +50,7 @@ demonstrate! {
             assert_that!(yatzy(Category::Sixes, roll(2,3,2,5,1)), eq(0));
             assert_that!(yatzy(Category::Sixes, roll(4,5,5,6,1)), eq(6));
         }
-        
+            
         // Pair:
         // If exactly two dice have the same value then the player scores the sum of the two highest matching dice.
         // For example, when placed on "pair"
@@ -80,10 +80,10 @@ demonstrate! {
         //     2,2,2,5,5 scores 0
         //     2,2,2,2,2 scores 0
         
-        // Small straight:
-        // When placed on "small straight", if the dice read
-        //   1,2,3,4,5, the player scores 15 (the sum of all the dice).
-        
+        it "Small straight: if the dice read one, two, three, four, five, the player scores 15 (the sum of all the dice)" {
+            assert_that!(yatzy(Category::SmallStraight, roll(2,3,4,5,6)), eq(0));
+            assert_that!(yatzy(Category::SmallStraight, roll(1,2,3,4,5)), eq(15));
+        }
         // Large straight:
         // When placed on "large straight", if the dice read
         //   2,3,4,5,6, the player scores 20 (the sum of all the dice).
