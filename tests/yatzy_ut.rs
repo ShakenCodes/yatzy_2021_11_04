@@ -26,9 +26,8 @@ demonstrate! {
         use hamcrest2::prelude::*;
     
         it "chance scores the sum of all dice, no matter what they read" {
-            assert_that!(yatzy(roll(1,1,3,3,6)), eq(14));
-            //    1,1,3,3,6 placed on "chance" scores 14 (1+1+3+3+6)
-            //    4,5,5,6,1 placed on "chance" scores 21 (4+5+5+6+1)
+            assert_that!(yatzy(roll(1,1,3,3,6)), eq(1+1+3+3+6));
+            assert_that!(yatzy(roll(4,5,5,6,1)), eq(4+5+5+6+1));
         }
         
         // Yatzy:
