@@ -40,12 +40,12 @@ demonstrate! {
             assert_that!(yatzy(Category::Ones, roll(3,3,3,4,5)), eq(0));
             assert_that!(yatzy(Category::Ones, roll(1,1,1,1,1)), eq(5));
         }
-        // Ones, Twos, Threes, Fours, Fives, Sixes:
-        // The player scores the sum of the dice that reads one, two, three, four, five or six, respectively.
-        // For example,
-        //    1,1,2,4,4 placed on "fours" scores 8 (4+4)
-        //    2,3,2,5,1 placed on "twos" scores 4  (2+2)
-        //    3,3,3,4,5 placed on "ones" scores 0
+        it "Ones, Twos, Threes, Fours, Fives, Sixes: scores the sum of dice that reads one, two, three, four, five or six, respectively" {
+            assert_that!(yatzy(Category::Ones, roll(3,3,3,4,5)), eq(0));
+            assert_that!(yatzy(Category::Ones, roll(1,1,1,1,1)), eq(5));
+            assert_that!(yatzy(Category::Twos, roll(2,3,2,5,1)), eq(2+2));
+            //    1,1,2,4,4 placed on "fours" scores 8 (4+4)
+        }
         
         // Pair:
         // If exactly two dice have the same value then the player scores the sum of the two highest matching dice.
