@@ -6,16 +6,13 @@ pub enum Category {
 }
 pub fn yatzy(category: Category, roll: Vec<u32>) -> u32 {
     match category {
-        Category::Ones => score_ones(roll),
+        Category::Ones => score_uppers(1, roll),
         Category::Twos => score_uppers(2, roll),
         Category::Yatzy => score_yatzy(roll),
         Category::Chance => score_chance(roll),
     }
 }
 
-fn score_ones(roll: Vec<u32>) -> u32 {
-    roll.into_iter().fold(0, |sum, x| add_value_if_same(1, sum, x))
-}
 fn score_uppers(category_value: u32, roll: Vec<u32>) -> u32 {
     roll.into_iter().fold(0, |sum, x| add_value_if_same(category_value, sum, x))
 }
