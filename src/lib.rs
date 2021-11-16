@@ -38,13 +38,8 @@ fn add_value_if_same(test_val: u32, sum: u32, value: u32) -> u32 {
 }
 
 fn score_full_house(roll: Vec<u32>) -> u32 {
-    if not_two_groups(&roll) { return 0; }
-    let roll_histogram = create_roll_histogram(&roll);
-    if roll_histogram[&roll[0]] < 2 || roll_histogram[&roll[0]] > 3 { return 0; }
-    sum_rolls(roll)
-}
-fn create_roll_histogram(roll: &Vec<u32>) -> HashMap<u32, u32> {
-    roll.into_iter().fold(HashMap::new(), |mut h, x| { *h.entry(*x).or_insert(0) += 1; h } )
+    if two_of_some_die(&roll) && three_of_some_die(&roll) { return sum_rolls(roll); }
+    0
 }
 
 fn score_small_straight(roll: Vec<u32>) -> u32 {
@@ -72,6 +67,18 @@ fn score_chance(roll: Vec<u32>) -> u32 {
 fn sum_rolls(roll: Vec<u32>) -> u32 {
     roll.into_iter().fold(0, |sum, x| sum + x)
 }
- fn not_two_groups(roll: &Vec<u32>) -> bool {
-    create_roll_histogram(&roll).len() != 2
+
+fn two_of_some_die(roll: &Vec<u32>) -> bool {
+    let mut twice_rolled_histogram = create_roll_histogram(&roll);
+    twice_rolled_histogram.retain(|_, v| *v == 2);
+    twice_rolled_histogram.len() > 0
  }
+ fn three_of_some_die(roll: &Vec<u32>) -> bool {
+    let mut thrice_rolled_histogram = create_roll_histogram(&roll);
+    thrice_rolled_histogram.retain(|_, v| *v == 3);
+    thrice_rolled_histogram.len() > 0
+ }
+ 
+fn create_roll_histogram(roll: &Vec<u32>) -> HashMap<u32, u32> {
+    roll.into_iter().fold(HashMap::new(), |mut h, x| { *h.entry(*x).or_insert(0) += 1; h } )
+}
