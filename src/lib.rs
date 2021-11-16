@@ -68,17 +68,17 @@ fn sum_rolls(roll: Vec<u32>) -> u32 {
     roll.into_iter().sum()
 }
 
-fn two_of_some_die(roll: &Vec<u32>) -> bool {
+fn two_of_some_die(roll: &[u32]) -> bool {
     let mut twice_rolled_histogram = create_roll_histogram(&roll);
     twice_rolled_histogram.retain(|_, v| *v == 2);
     twice_rolled_histogram.len() > 0
  }
- fn three_of_some_die(roll: &Vec<u32>) -> bool {
+ fn three_of_some_die(roll: &[u32]) -> bool {
     let mut thrice_rolled_histogram = create_roll_histogram(&roll);
     thrice_rolled_histogram.retain(|_, v| *v == 3);
     thrice_rolled_histogram.len() > 0
  }
  
-fn create_roll_histogram(roll: &Vec<u32>) -> HashMap<u32, u32> {
+fn create_roll_histogram(roll: &[u32]) -> HashMap<u32, u32> {
     roll.into_iter().fold(HashMap::new(), |mut h, x| { *h.entry(*x).or_insert(0) += 1; h } )
 }
