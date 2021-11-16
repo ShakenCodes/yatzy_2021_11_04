@@ -69,12 +69,12 @@ fn sum_rolls(roll: Vec<u32>) -> u32 {
 }
 
 fn two_of_some_die(roll: &[u32]) -> bool {
-    let mut twice_rolled_histogram = create_roll_histogram(&roll);
+    let mut twice_rolled_histogram = create_roll_histogram(roll);
     twice_rolled_histogram.retain(|_, v| *v == 2);
     ! twice_rolled_histogram.is_empty()
  }
  fn three_of_some_die(roll: &[u32]) -> bool {
-    let mut thrice_rolled_histogram = create_roll_histogram(&roll);
+    let mut thrice_rolled_histogram = create_roll_histogram(roll);
     thrice_rolled_histogram.retain(|_, v| *v == 3);
     ! thrice_rolled_histogram.is_empty()
  }
