@@ -40,10 +40,11 @@ fn add_value_if_same(test_val: u32, sum: u32, value: u32) -> u32 {
 fn score_full_house(roll: Vec<u32>) -> u32 {
     let roll_histogram = create_roll_histogram(&roll);
     if roll_histogram.len() != 2 { return 0; }
+    if roll_histogram[&roll[0]] < 2 || roll_histogram[&roll[0]] > 3 { return 0; }
     roll.into_iter().fold(0, |sum, x| sum + x)
 }
 fn create_roll_histogram(roll: &Vec<u32>) -> HashMap<u32, u32> {
-    roll.into_iter().fold(HashMap::new(), |mut h, x| { *h.entry(*x).or_insert(1) += 1; h } )
+    roll.into_iter().fold(HashMap::new(), |mut h, x| { *h.entry(*x).or_insert(0) += 1; h } )
 }
 
 fn score_small_straight(roll: Vec<u32>) -> u32 {
