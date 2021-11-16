@@ -89,12 +89,10 @@ demonstrate! {
             assert_that!(yatzy(Category::LargeStraight, roll(1,2,3,4,5)), eq(0));
         }
 
-        // Full house:
-        // If the dice are two of a kind and three of a different kind then the player scores the sum of all five dice.
-        // For example, when placed on "full house"
-        //     1,1,2,2,2 scores 8 (1+1+2+2+2)
-        //     2,2,3,3,4 scores 0
-        //     4,4,4,4,4 scores 0
-
+        it "Full house: If the dice are two of a kind and three of a different kind then the player scores the sum of all five dice." {
+        // assert_that!(yatzy(Category::FullHouse, roll(1,1,2,2,2)), eq(1+1+2+2+2));
+        assert_that!(yatzy(Category::FullHouse, roll(2,2,3,3,4)), eq(0));
+        // assert_that!(yatzy(Category::FullHouse, roll(4,4,4,4,4)), eq(0);
+        }
     }
 }

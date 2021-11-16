@@ -5,6 +5,7 @@ pub enum Category {
     Fours,
     Fives,
     Sixes,
+    FullHouse,
     SmallStraight,
     LargeStraight,
     Yatzy,
@@ -18,6 +19,7 @@ pub fn yatzy(category: Category, roll: Vec<u32>) -> u32 {
         Category::Fours => score_uppers(4, roll),
         Category::Fives => score_uppers(5, roll),
         Category::Sixes => score_uppers(6, roll),
+        Category::FullHouse => score_full_house(roll),
         Category::SmallStraight => score_small_straight(roll),
         Category::LargeStraight => score_large_straight(roll),
         Category::Yatzy => score_yatzy(roll),
@@ -31,6 +33,10 @@ fn score_uppers(category_value: u32, roll: Vec<u32>) -> u32 {
 fn add_value_if_same(test_val: u32, sum: u32, value: u32) -> u32 {
     if test_val != value { return sum; }
     sum + value
+}
+
+fn score_full_house(roll: Vec<u32>) -> u32 {
+    0
 }
 
 fn score_small_straight(roll: Vec<u32>) -> u32 {
