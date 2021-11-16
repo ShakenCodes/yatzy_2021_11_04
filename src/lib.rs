@@ -65,7 +65,7 @@ fn score_chance(roll: Vec<u32>) -> u32 {
 }
 
 fn sum_rolls(roll: Vec<u32>) -> u32 {
-    roll.into_iter().fold(0, |sum, x| sum + x)
+    roll.into_iter().sum()
 }
 
 fn two_of_some_die(roll: &Vec<u32>) -> bool {
