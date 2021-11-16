@@ -41,7 +41,7 @@ fn score_full_house(roll: Vec<u32>) -> u32 {
     let roll_histogram = create_roll_histogram(&roll);
     if roll_histogram.len() != 2 { return 0; }
     if roll_histogram[&roll[0]] < 2 || roll_histogram[&roll[0]] > 3 { return 0; }
-    roll.into_iter().fold(0, |sum, x| sum + x)
+    sum_rolls(roll)
 }
 fn create_roll_histogram(roll: &Vec<u32>) -> HashMap<u32, u32> {
     roll.into_iter().fold(HashMap::new(), |mut h, x| { *h.entry(*x).or_insert(0) += 1; h } )
@@ -66,5 +66,9 @@ fn are_all_elements_equal(roll: Vec<u32>) -> bool {
 }
 
 fn score_chance(roll: Vec<u32>) -> u32 {
+    sum_rolls(roll)
+}
+
+fn sum_rolls(roll: Vec<u32>) -> u32 {
     roll.into_iter().fold(0, |sum, x| sum + x)
 }
