@@ -24,18 +24,18 @@ demonstrate! {
         use super::roll;
         use yatzy::*;
         use hamcrest2::prelude::*;
-    
+
         it "chance scores the sum of all dice, no matter what they read" {
             assert_that!(yatzy(Category::Chance, roll(1,1,3,3,6)), eq(1+1+3+3+6));
             assert_that!(yatzy(Category::Chance, roll(4,5,5,6,1)), eq(4+5+5+6+1));
         }
-        
+
         it "Yatzy: If all dice have the same number, the player scores 50 points." {
             assert_that!(yatzy(Category::Yatzy, roll(1,1,1,1,1)), eq(50));
             assert_that!(yatzy(Category::Yatzy, roll(5,5,5,5,5)), eq(50));
             assert_that!(yatzy(Category::Yatzy, roll(1,1,1,2,1)), eq(0));
         }
-        
+
         it "Ones scores the sum of dice that read one" {
             assert_that!(yatzy(Category::Ones, roll(3,3,3,4,5)), eq(0));
             assert_that!(yatzy(Category::Ones, roll(1,1,1,1,1)), eq(5));
@@ -50,7 +50,7 @@ demonstrate! {
             assert_that!(yatzy(Category::Sixes, roll(2,3,2,5,1)), eq(0));
             assert_that!(yatzy(Category::Sixes, roll(4,5,5,6,1)), eq(6));
         }
-            
+
         // Pair:
         // If exactly two dice have the same value then the player scores the sum of the two highest matching dice.
         // For example, when placed on "pair"
